@@ -1,0 +1,8 @@
+{
+    "connectionLimit": "10",
+    "host": "localhost",
+    "user": "<your database user name>",
+    "password": "<password>",
+    "database": "<database name>",
+    "timezone": "ist"
+}

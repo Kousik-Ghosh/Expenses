@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>Expenses</title>
+	<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="/expenses/assets/index.css">
+</head>
+
+<body>
+	<div class="filter" id="filter" style="display: none;">
+		<div class="filter-content">
+			<div class="filter-head">
+				<div class="filter-cancel-button">
+					<button class="mdc-icon-button material-icons cc-cancel-icon" onclick="onFilterExpensesClose()">cancel</button>
+				</div>
+			</div>
+			<div class="filter-body">
+				<div class="filter-today">
+					<div class="mdc-form-field">
+						<div class="mdc-radio">
+							<input class="mdc-radio__native-control" type="radio" id="radio-1" name="filter-radios" checked>
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+							<div class="mdc-radio__ripple"></div>
+						</div>
+						<label for="radio-1">Today's Expenses</label>
+					</div>
+				</div>
+				<div class="filter-this-month">
+					<div class="mdc-form-field">
+						<div class="mdc-radio">
+							<input class="mdc-radio__native-control" type="radio" id="radio-2" name="filter-radios">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+							<div class="mdc-radio__ripple"></div>
+						</div>
+						<label for="radio-2">This month's Expenses</label>
+					</div>
+				</div>
+				<div class="filter-all">
+					<div class="mdc-form-field">
+						<div class="mdc-radio">
+							<input class="mdc-radio__native-control" type="radio" id="radio-3" name="filter-radios">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+							<div class="mdc-radio__ripple"></div>
+						</div>
+						<label for="radio-3">All Expenses</label>
+					</div>
+				</div>
+				<div class="filter-footer">
+					<div class="filter-save-button">
+						<button class="mdc-button mdc-button--raised" onclick="onFilterExpensesSave();">
+							<div class="mdc-button__ripple"></div> <i class="material-icons mdc-button__icon" aria-hidden="true">filter_alt</i>
+							<span class="mdc-button__label">Filter</span>
+						</button>
+						<button class="mdc-icon-button material-icons" onclick="onFilterExpensesSave();">filter_alt</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="add-modal" id="add-modal" style="display: none;">
+		<div class="add-modal-content">
+			<div class="add-modal-head">
+				<div class="add-modal-cancel-button">
+					<button class="mdc-icon-button material-icons cc-cancel-icon" onclick="onAddExpensesClose()">cancel</button>
+				</div>
+			</div>
+			<div class="add-modal-body">
+				<form onsubmit="return false">
+					<div class="add-modal-name-field">
+						<label class="mdc-text-field mdc-text-field--outlined">
+							<input type="text" id="expense-name" class="mdc-text-field__input" aria-labelledby="my-label-id" maxlength="35" required> <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+							<span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label" id="my-label-id">Expense Name</span>
+							</span> <span class="mdc-notched-outline__trailing"></span>
+							</span>
+						</label>
+						<div class="mdc-text-field-helper-line">
+							<div class="mdc-text-field-character-counter">0 / 35</div>
+						</div>
+					</div>
+					<div class="add-modal-amount-field">
+						<label class="mdc-text-field mdc-text-field--outlined">
+							<input type="number" id="expense-amount" min="0" max="999999" step="0.01" class="mdc-text-field__input" aria-labelledby="my-label-id" required> <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+							<span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label" id="my-label-id">Amount</span>
+							</span> <span class="mdc-notched-outline__trailing"></span>
+							</span>
+						</label>
+					</div>
+					<div class="add-modal-datetime-field">
+						<label class="mdc-text-field mdc-text-field--outlined">
+							<input id="expense-datetime" type="datetime-local" class="mdc-text-field__input" aria-labelledby="my-label-id" required> <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+							<span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label" id="my-label-id">Date & Time</span>
+							</span> <span class="mdc-notched-outline__trailing"></span>
+							</span>
+						</label>
+					</div>
+					<div class="add-modal-footer">
+						<div class="add-modal-save-button">
+							<button class="mdc-button mdc-button--raised" type="submit" onclick="onAddExpensesSave();">
+								<div class="mdc-button__ripple"></div> <i class="material-icons mdc-button__icon" aria-hidden="true">check_circle</i>
+								<span class="mdc-button__label">Submit</span>
+							</button>
+							<button class="mdc-icon-button material-icons" type="submit" onclick="onAddExpensesSave();">check_circle</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="app-display-port">
+		<div class="app-header">
+			<div class="app-title" onclick="location.href = '/expenses/'">Expenses</div>
+			<div class="header-buttons">
+				<div class="add-expenses-button-div">
+					<button class="mdc-button mdc-button--outlined" onclick="onAddExpenses()">
+						<div class="mdc-button__ripple"></div> <i class="material-icons mdc-button__icon" aria-hidden="true">playlist_add</i>
+						<span class="mdc-button__label">Add</span>
+					</button>
+					<button class="mdc-icon-button material-icons" onclick="onAddExpenses()">playlist_add</button>
+				</div>
+				<div class="filter-expenses-button-div">
+					<button class="mdc-button mdc-button--outlined" onclick="onAddExpensesFilter()">
+						<div class="mdc-button__ripple"></div> <i class="material-icons mdc-button__icon" aria-hidden="true">filter_alt</i>
+						<span class="mdc-button__label">Filter</span>
+					</button>
+					<button class="mdc-icon-button material-icons" onclick="onAddExpensesFilter()">filter_alt</button>
+				</div>
+			</div>
+		</div>
+		<div class="app-body">
+			<div class="expenses-loading">
+				<img src="/expenses/assets/loading.svg" alt="Loading Expenses...">
+			</div>
+			<div class="no-expenses">No Expenses :)</div>
+			<div class="expenses-card" style="display: none">
+				<div class="expenses-name">
+					<div class="expenses-name-text">ice cream and sandwich at lala land</div>
+				</div>
+				<div class="expenses-price">
+					<div class="expenses-price-value">&#8377;3000000</div>
+				</div>
+				<div class="expenses-date">
+					<div class="expenses-date-icon"> <span class="material-icons">
+                            date_range
+                        </span>
+					</div>
+					<div class="expenses-date-value">09-March-2020</div>
+				</div>
+				<div class="expenses-time">
+					<div class="expenses-time-icon"> <span class="material-icons">
+                            access_time
+                        </span>
+					</div>
+					<div class="expenses-time-value">11:36 AM &#xb7; Morning</div>
+				</div>
+				<div class="expenses-delete">
+					<div class="expenses-delete-icon">
+						<button class="mdc-button mdc-button--outlined cc-expenses-delete" onclick="onDelete(this.value)">
+							<div class="mdc-button__ripple"></div> <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
+							<span class="mdc-button__label">DELETE</span>
+						</button>
+						<button class="mdc-icon-button material-icons cc-expenses-delete" onclick="onDelete(this.value)">delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="app-footer">
+			<div class="aggregation-period-text"></div>
+			<div class="aggregation-period-value"></div>
+		</div>
+	</div>
+	<div class="mdc-snackbar">
+		<div class="mdc-snackbar__surface">
+			<div class="mdc-snackbar__label" role="status" aria-live="polite"></div>
+		</div>
+	</div>
+</body>
+<script src="/expenses/assets/index.js"></script>
+<script src="/expenses/assets/moment.js"></script>
+
+</html>

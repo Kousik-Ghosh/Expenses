@@ -1,0 +1,24 @@
+{
+  "name": "expenses",
+  "version": "1.0.0",
+  "description": "This is an app for tracking daily expenses.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "daily",
+    "expenses",
+    "analytics",
+    "and",
+    "more."
+  ],
+  "author": "Kousik Ghosh.",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}

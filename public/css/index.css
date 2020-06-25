@@ -1,0 +1,538 @@
+@font-face {
+	font-family: "Cookie";
+	src: url("/expenses/assets/Cookie-Regular.ttf");
+}
+@font-face {
+	font-family: "Baloo2";
+	src: url("/expenses/assets/Baloo2-SemiBold.ttf");
+}
+/* 
+  For Standard Desktop view
+*/
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+.app-display-port.active {
+	filter: blur(3px);
+	pointer-events: none;
+}
+.app-display-port {
+	height: 98%;
+	filter: blur(0px);
+}
+
+.filter{
+	width: 40%;
+	background-color: white;
+	position: absolute;
+	top: 12%;
+	left: 32%;
+	height: 75%;
+	border-radius: 10px;
+	z-index: 2;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.filter-head{
+	position: absolute;
+	width: 100%;
+	height: 6%;
+	z-index: 2;
+}
+.filter-cancel-button{
+	display: block;
+	color: blue;
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+}
+.filter-footer {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	height: 15%;
+}
+.filter-save-button {
+	position: absolute;
+	top: 35%;
+	right: 6%;
+}
+.filter-body {
+	position: absolute;
+	top: 0%;
+	width: 100%;
+	height: 85%;
+}
+.filter-today {
+	position: absolute;
+	top: 9%;
+	left: 10%;
+	height: 16%;
+	width: 59%;
+}
+.filter-this-month{
+	position: absolute;
+	top: 30%;
+	left: 10%;
+	height: 16%;
+	width: 59%;
+}
+.filter-all{
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	height: 16%;
+	width: 59%;
+}
+.add-modal {
+	width: 40%;
+	background-color: white;
+	position: absolute;
+	top: 12%;
+	left: 32%;
+	height: 75%;
+	border-radius: 10px;
+	z-index: 2;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.add-modal-head{
+	position: absolute;
+	width: 100%;
+	height: 6%;
+	z-index: 2;
+}
+.add-modal-cancel-button {
+	display: block;
+	color: blue;
+    width: 10%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+}
+.add-modal-body {
+	position: absolute;
+	top: 0%;
+	width: 100%;
+	height: 85%;
+}
+.add-modal-name-field {
+	position: absolute;
+	top: 9%;
+	left: 25%;
+	height: 16%;
+	width: 59%;
+}
+.add-modal-amount-field {
+	position: absolute;
+	top: 30%;
+	left: 25%;
+	height: 16%;
+	width: 59%;
+}
+.add-modal-datetime-field {
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	height: 16%;
+	width: 59%;
+}
+.add-modal-footer {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	height: 15%;
+}
+.add-modal-save-button {
+	position: absolute;
+	top: 35%;
+	right: 6%;
+}
+.app-header {
+	position: fixed;
+	z-index: 1;
+	height: 10%;
+	width: 100%;
+	box-shadow: 0 5px 25px -6px black;
+}
+.app-title {
+	position: fixed;
+	left: 0.5em;
+	top: 0.2em;
+	font-family: 'Cookie', cursive;
+	font-size: 6vh;
+	width: 3em;
+	height: 1em;
+	cursor: pointer;
+}
+.header-buttons {
+	position: fixed;
+	right: 1em;
+	width: 23em;
+	height: 4em;
+	top: 1em;
+}
+.add-expenses-button-div {
+	position: fixed;
+	top: 1.5em;
+	right: 11em;
+}
+.filter-expenses-button-div {
+	position: fixed;
+	top: 1.5em;
+	right: 2em;
+}
+.expenses-loading {
+	display: block;
+	position: absolute;
+	top: 20%;
+	left: 40%;
+}
+.no-expenses {
+	display: none;
+	font-family: "Baloo2";
+	font-size: 6vh;
+	position: absolute;
+	top: 30%;
+	left: 38%;
+}
+.app-body {
+	position: relative;
+	top: 10%;
+	height: 80%;
+	overflow-y: scroll;
+	background-image: linear-gradient(38deg, #ffffff, #ff8855);
+	filter: blur(0px);
+}
+.expenses-card {
+	position: relative;
+	width: 70%;
+	height: 35%;
+	top: 0%;
+	left: 11%;
+	margin: 5%;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	border-radius: 16px;
+	background-color: white;
+}
+.expenses-name {
+	width: 70%;
+	height: 60%;
+}
+.expenses-name-text {
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	font-size: 4vh;
+	font-family: 'Baloo2';
+	font-weight: bold;
+	width: 50%;
+	height: 60%;
+	color: darkblue;
+}
+.expenses-price {
+	position: absolute;
+	left: 70%;
+	top: 0%;
+	width: 30%;
+	height: 60%;
+}
+.expenses-price-value {
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	width: 100%;
+	font-size: 4vw;
+	font-weight: bold;
+	text-align: center;
+	color: red;
+	font-family: 'Baloo2';
+}
+.expenses-date {
+	width: 35%;
+	height: 40%;
+}
+.expenses-date-icon {
+	position: relative;
+	top: 45%;
+	left: 13%;
+	width: 15%;
+}
+.expenses-date-value {
+	position: absolute;
+	height: 15%;
+	top: 77%;
+	width: 25%;
+	left: 10%;
+	font-family: 'Baloo2';
+}
+.expenses-time {
+	position: absolute;
+	top: 60%;
+	left: 35%;
+	width: 35%;
+	height: 40%;
+	;
+}
+.expenses-time-icon {
+	position: relative;
+	top: 45%;
+	width: 13%;
+}
+.expenses-time-value {
+	position: absolute;
+	top: 43%;
+	left: 14%;
+	font-family: 'Baloo2';
+}
+.expenses-delete {
+	position: absolute;
+	top: 60%;
+	left: 70%;
+	width: 30%;
+	height: 40%;
+}
+.expenses-delete-icon {
+	position: relative;
+	top: 40%;
+	left: 33%;
+	width: 60%;
+}
+.app-footer {
+	position: fixed;
+	bottom: 0%;
+	height: 10%;
+	width: 100%;
+	box-shadow: 0 -4px 6px -6px black;
+}
+.aggregation-period-text {
+	position: relative;
+	top: 32%;
+	left: 10%;
+	width: 38%;
+	height: 62%;
+	text-align: right;
+	font-size: 3vh;
+	font-family: 'Baloo2';
+}
+.aggregation-period-value {
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	width: 21%;
+	height: 94%;
+	font-size: 7vh;
+	font-family: 'Baloo2';
+	color: red;
+}
+/*
+  For Phone in Portrait Mode
+  Trigers when scrren size is less < 700px
+  i.e. when maximum width available is 700px
+*/
+
+@media (max-width: 700px) {
+	.app-title {
+		font-size: 6vh;
+	}
+	.expenses-loading {
+		font-style: "Baloo2";
+		font-size: 6vh;
+		top: 15%;
+		left: 27%;
+	}
+	.no-expenses {
+		display: none;
+		font-family: "Baloo2";
+		font-size: 4vh;
+		position: absolute;
+		top: 30%;
+		left: 28%;
+	}
+	.mdc-button {
+		display: none;
+	}
+	.mdc-icon-button {
+		display: block;
+		color: blue;
+	}
+	.header-buttons {
+		right: 0em;
+		top: 0em;
+		width: 12em;
+		left: 11em;
+	}
+	.add-expenses-button-div {
+		top: 1em;
+		right: 4em;
+	}
+	.filter-expenses-button-div {
+		top: 1em;
+		right: 1em;
+	}
+	.expenses-card {
+		width: 80%;
+		height: 22%;
+		left: 5%;
+	}
+	.expenses-name {
+		height: 40%;
+	}
+	.expenses-name-text {
+		font-size: 2vh;
+		height: 35%;
+	}
+	.expenses-price-value {
+		font-size: 6vw;
+	}
+	.expenses-date {
+		height: 25%;
+		width: 70%;
+	}
+	.expenses-date-icon {
+		top: 27%;
+		left: 7%;
+	}
+	.expenses-date-value {
+		top: 47%;
+		left: 16%;
+		width: 55%;
+		height: 20%;
+	}
+	.expenses-time {
+		top: 70%;
+		left: 0%;
+		height: 25%;
+		width: 70%;
+	}
+	.expenses-time-icon {
+		top: 0%;
+		left: 7%;
+	}
+	.expenses-time-value {
+		top: 0%;
+		left: 23%;
+	}
+	.expenses-delete-icon {
+		top: 0%;
+		left: 40%;
+	}
+	.aggregation-period-text {
+		top: 25%;
+		left: -5%;
+		width: 51%;
+		font-size: 2vh;
+	}
+	.aggregation-period-value {
+		top: 0%;
+		left: 47%;
+		width: 46%;
+		height: 98%;
+		font-size: 5vh;
+		text-align: center;
+	}
+	.filter {
+		top: 12%;
+		left: 10%;
+		width: 80%;
+		height: 75%;
+	}
+	.filter-cancel-button {
+		display: block;
+		color: blue;
+		width: 10%;
+		height: 100%;
+		position: absolute;
+		right: 8%;
+	}
+
+
+	.add-modal {
+		top: 12%;
+		left: 10%;
+		width: 80%;
+		height: 75%;
+	}
+	.add-modal-cancel-button {
+		display: block;
+		color: blue;
+		width: 10%;
+		height: 100%;
+		position: absolute;
+		right: 8%;
+	}
+	.add-modal-name-field {
+		left: 8%;
+	}
+	.add-modal-amount-field {
+		left: 8%;
+	}
+	.add-modal-datetime-field {
+		left: 8%;
+		top: 52%;
+	}
+	.add-modal-save-button {
+		right: 3%;
+	}
+}
+/*
+  For Standard Desktop Mode
+  Switching back to buttons from icon-buttons
+  when minimum width available is 700px
+*/
+
+@media (min-width: 701px) {
+	.mdc-button {
+		display: block;
+	}
+	.mdc-icon-button {
+		display: none;
+	}
+	.cc-cancel-icon {
+		display: block;
+		color: blue;
+	}
+}
+/*
+  For Phone in Landscape Mode
+  Trigers when scrren size in height is less < 400px
+  i.e. when maximum height available is 400px
+*/
+
+@media (max-height: 400px) {
+	.app-header {
+		height: 18%;
+	}
+	.app-body {
+		top: 18%;
+		height: 72%;
+	}
+	.app-title {
+		font-size: 10vh;
+	}
+	.expenses-name-text {
+		font-size: 4vh;
+	}
+	.expenses-card {
+		height: 54%;
+	}
+	.add-modal {
+		top: 9%;
+		left: 25%;
+		width: 50%;
+		height: 67%;
+	}
+	.add-modal-amount-field {
+		left: 8%;
+		top: 40%;
+	}
+	.add-modal-datetime-field {
+		left: 8%;
+		top: 75%;
+	}
+	.add-modal-save-button {
+		top: 0%;
+	}
+}
