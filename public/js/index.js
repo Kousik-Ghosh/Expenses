@@ -1,31 +1,40 @@
 /* Adding matarial ribble effect and text animation
    to google material design elements
 */
-const buttons = document.querySelectorAll('.mdc-button');
-const iconButtons = document.querySelectorAll('.mdc-icon-button');
-const textFields = document.querySelectorAll('.mdc-text-field');
-const fabs = document.querySelectorAll('.mdc-fab');
-const radioButtons = document.querySelectorAll('.mdc-radio');
-const radioButtonsForms = document.querySelectorAll('.mdc-form-field');
-const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
-for (const button of buttons) {
-	mdc.ripple.MDCRipple.attachTo(button);
-}
-for (const iconButton of iconButtons) {
-	mdc.iconButton.MDCIconButtonToggle.attachTo(iconButton);
-}
-for (const textField of textFields) {
-	mdc.textField.MDCTextField.attachTo(textField);
-}
-for (const fab of fabs) {
-	mdc.ripple.MDCRipple.attachTo(fab);
-}
-for (const radioButton of radioButtons) {
-	mdc.radio.MDCRadio.attachTo(radioButton);
-}
-for (const radioButtonsForm of radioButtonsForms) {
-	mdc.formField.MDCFormField.attachTo(radioButtonsForm);
-}
+
+(function(){
+	const buttons = document.querySelectorAll('.mdc-button');
+	const iconButtons = document.querySelectorAll('.mdc-icon-button');
+	const textFields = document.querySelectorAll('.mdc-text-field');
+	const fabs = document.querySelectorAll('.mdc-fab');
+	const radioButtons = document.querySelectorAll('.mdc-radio');
+	const radioButtonsForms = document.querySelectorAll('.mdc-form-field');
+	const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+
+	for (const button of buttons) {
+		mdc.ripple.MDCRipple.attachTo(button);
+	}
+	for (const iconButton of iconButtons) {
+		mdc.iconButton.MDCIconButtonToggle.attachTo(iconButton);
+	}
+	for (const textField of textFields) {
+		mdc.textField.MDCTextField.attachTo(textField);
+	}
+	for (const fab of fabs) {
+		mdc.ripple.MDCRipple.attachTo(fab);
+	}
+	for (const radioButton of radioButtons) {
+		mdc.radio.MDCRadio.attachTo(radioButton);
+	}
+	for (const radioButtonsForm of radioButtonsForms) {
+		mdc.formField.MDCFormField.attachTo(radioButtonsForm);
+	}
+
+	return gMaterial = {
+		snackbar: snackbar
+	};
+})();
+
 
 /*
   Vanila javascript to handle all user interactions and other stuff.
@@ -61,8 +70,8 @@ function toggleAppBodyBlur() {
 }
 
 function showSnackBar(sText) {
-	snackbar.labelText = sText;
-	snackbar.open();
+	gMaterial.snackbar.labelText = sText;
+	gMaterial.snackbar.open();
 }
 
 function onAddExpensesFilter(){
