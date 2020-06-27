@@ -107,9 +107,9 @@ function onFilterExpensesSave(){
 		currentFilterText = "This Month's expense";
 		getAllExpenses(getExpenseAPI()+"/filter/thismonth", drawTable);
 	}else{
-		currentFilter = "";
+		currentFilter = "/all";
 		currentFilterText = "All expense";
-		getAllExpenses(getExpenseAPI(), drawTable);
+		getAllExpenses(getExpenseAPI() + '/all', drawTable);
 	}
 }
 
@@ -123,7 +123,7 @@ function removeAllExpensesContent() {
 }
 
 function getExpenseAPI(){
-	return "http://localhost:3000/expenses/api/expenses";
+	return "/expenses";
 }
 
 function onAddExpensesSave() {
@@ -148,7 +148,7 @@ function onAddExpensesSave() {
 		xhr.ontimeout = function (e) {
 			showSnackBar("Oops, Something went wrong. Try Again.");
 		};
-		xhr.open("POST", getExpenseAPI(), true);
+		xhr.open("POST", getExpenseAPI() +'/create', true);
 		xhr.timeout = 8000;
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.send(JSON.stringify({
