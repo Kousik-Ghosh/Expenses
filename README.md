@@ -14,7 +14,7 @@ Expenses is a NodeJS app that helps you to track your daily expenses. All the ex
 ```
 $ npm install
 ```
-4. [Install Mysql](https://dev.mysql.com/downloads/mysql/ "MySql Community") *(if not already).*
+4. [Install Mysql](https://dev.mysql.com/downloads/mysql/ "MySql Community") *(if not already).* 
 5. Create the following schema with name **t_expenses**.
 ```
 $ desc t_expenses;
