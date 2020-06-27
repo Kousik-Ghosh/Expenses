@@ -1,8 +1,8 @@
 {
     "connectionLimit": "10",
     "host": "localhost",
-    "user": "u_app_expenses",
-    "password": "a298a138-9738-11ea-b8fc-0242ac110002",
-    "database": "db_expenses",
+    "user": "<your database user name>",
+    "password": "<password>",
+    "database": "<database name>",
     "timezone": "ist"
 }
