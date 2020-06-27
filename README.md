@@ -9,11 +9,13 @@ Expenses is a NodeJS app that helps you to track your daily expenses. All the ex
 
 # Installation
 1.	Download the project zip into some folder and and extract it.
-2.	Open terminal and navigate to the folder ``Expenses-master\node`` and type
+2.	[Install NodeJS](https://nodejs.org/en/download/ "NodeJS Homepage") *(if not already).* 
+3.	Open terminal and navigate to the folder ``Expenses-master\node`` and type
 ```
 $ npm install
 ```
-3. install Mysql and and create the following schema with name **t_expenses**.
+4. [Install Mysql](https://dev.mysql.com/downloads/mysql/ "MySql Community") *(if not already).*
+5. Create the following schema with name **t_expenses**.
 ```
 $ desc t_expenses;
 +---------------------+--------------+------+-----+---------+-------+
@@ -25,8 +27,8 @@ $ desc t_expenses;
 | f_expense_cost      | decimal(6,2) | NO   |     | NULL    |       |
 +---------------------+--------------+------+-----+---------+-------+
 ```
-4.	create a new Mysql user with access to this table and grant *select, insert, delete*. **(Not required if using root user)**
-5.	Open file   ``Expenses-master\util\dbConfig.json `` and change the *user, password, database* values.
+6.	Create a new Mysql user with access to this table and grant *select, insert, delete*. **(Not required if using root user)**
+7.	Open file   ``Expenses-master\util\dbConfig.json `` and change the *user, password, database* values.
 ```
 {
 	"connectionLimit":"10"
@@ -37,10 +39,10 @@ $ desc t_expenses;
 	"timezone":"ist"
 }
 ```
-6.	In terminal navigate to ``Expenses-master\`` and run the app.
+8.	Open terminal and navigate to ``Expenses-master\`` and run the app.
 ```
 $ node server.js
 Expenses server status : running
 Expenses server port   : 3000
 ```
-7.	Open browser and hit ``http://localhost:3000/expenses/``.  and *Eureka!*
+9.	Open browser and hit ``http://localhost:3000/expenses/``.  and *Eureka!*
