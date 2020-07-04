@@ -22,7 +22,7 @@ router.get("/all", function (request, response) {
 });
 
 router.post("/create", function (request, response) {
-    const insertQuery = "insert into T_Expenses values(uuid(),'" + request.body.expenseDateTime + "','" + request.body.expenseName + "'," + request.body.expenseAmount + ");"
+    const insertQuery = "insert into t_expenses values(uuid(),'" + request.body.expenseDateTime + "','" + request.body.expenseName + "'," + request.body.expenseAmount + ");"
     dbConnectionPool.getDBConnection().query(insertQuery, function (err, result) {
         if (err) {
             console.log(err);
