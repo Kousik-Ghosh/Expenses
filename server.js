@@ -5,7 +5,7 @@ const dbConnectionPool = require("./util/dbConnectionPool.js");
 
 const app = express();
 const router = express.Router();
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || 80;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
